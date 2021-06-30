@@ -1,0 +1,24 @@
+{% if table_list %}
+    <table class="table table-hover">
+        <thead class="thead-dark">
+            <tr>
+              <th>№</th>
+              <th>Number</th>
+              <th>Number_of_seats</th>
+                <th>Is Reserved</th>
+                <th></th>
+            </tr>
+        </thead>
+        {% for table in table_list %}
+            <tr>
+              <td> {{ forloop.counter }} </td>
+              <td> {{ table.number }}</td>
+              <td> {{ table.number_of_seats }}</td>
+                <td>{{ table.is_reserved }}</td>
+                <td> <a href="{% url 'greek_food:reserved' table.id %}" class="btn btn-primary">Забронировать</a> </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% else %}
+    <p>Sorry, list is empty</p>
+{% endif %}
